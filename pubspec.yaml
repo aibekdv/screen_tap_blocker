@@ -1,6 +1,6 @@
 name: screen_tap_blocker
 description: A Flutter plugin to block all screen taps temporarily on Android and iOS.
-version: 0.1.0
+version: 0.0.1
 homepage: https://github.com/aibekdv/screen_tap_blocker
 repository: https://github.com/aibekdv/screen_tap_blocker
 
