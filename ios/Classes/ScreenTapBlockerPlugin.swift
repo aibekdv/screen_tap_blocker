@@ -30,8 +30,14 @@ public class ScreenTapBlockerPlugin: NSObject, FlutterPlugin {
     private func enableBlocker() {
         guard blockerWindow == nil else { return }
 
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        blockerWindow = UIWindow(windowScene: windowScene!)
+        // Support both iOS 13+ (with window scenes) and older versions
+        if #available(iOS 13.0, *) {
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            blockerWindow = UIWindow(windowScene: windowScene!)
+        } else {
+            blockerWindow = UIWindow(frame: UIScreen.main.bounds)
+        }
+        
         blockerWindow?.frame = UIScreen.main.bounds
         blockerWindow?.backgroundColor = UIColor.clear
         blockerWindow?.windowLevel = UIWindow.Level.statusBar + 1
